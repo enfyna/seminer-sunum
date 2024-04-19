@@ -2,59 +2,57 @@
 
 [ext_resource type="Script" path="res://Oyuncu/Kamera.gd" id="1_i5yp2"]
 [ext_resource type="Script" path="res://Oyuncu/Oyuncu.gd" id="1_j3blr"]
-[ext_resource type="Texture2D" uid="uid://cv4am673g788b" path="res://icon.svg" id="1_jfm70"]
+[ext_resource type="Texture2D" uid="uid://c6c3micc6kkd1" path="res://Resimler/Dino/dino_base.png" id="2_qak63"]
+[ext_resource type="Texture2D" uid="uid://hcucfsdgfrom" path="res://Resimler/Dino/dino_right.png" id="3_q51b6"]
+[ext_resource type="Texture2D" uid="uid://c22hih56apwo1" path="res://Resimler/Dino/dino_left.png" id="4_hj6bv"]
+[ext_resource type="Script" path="res://Oyuncu/Hareket.gd" id="5_evhdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i71ms"]
 size = Vector2(128, 128)
 
-[sub_resource type="Gradient" id="Gradient_ugtvd"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.156863)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hokf8"]
-gradient = SubResource("Gradient_ugtvd")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwn3h"]
-size = Vector2(56, 720)
-
 [node name="Node2D" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(0, 295)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Temel", "Sag", "Sol")]
+position = Vector2(-171.654, 97.5483)
+velocity = Vector2(-2.8026e-45, 2.8026e-45)
 script = ExtResource("1_j3blr")
+Temel = NodePath("Temel")
+Sag = NodePath("Sag")
+Sol = NodePath("Sol")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
 shape = SubResource("RectangleShape2D_i71ms")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_jfm70")
+[node name="Temel" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, 1)
+scale = Vector2(0.290909, 0.301176)
+texture = ExtResource("2_qak63")
+flip_h = true
+
+[node name="Sag" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.290909, 0.301176)
+texture = ExtResource("3_q51b6")
+flip_h = true
+
+[node name="Sol" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(0, 1)
+scale = Vector2(0.290909, 0.301176)
+texture = ExtResource("4_hj6bv")
+flip_h = true
+
+[node name="HareketDikey InAktif" type="Node" parent="CharacterBody2D"]
+script = ExtResource("5_evhdw")
+yon = "y"
+tus = Array[int]([74, 75])
+
+[node name="HareketYatay Aktif" type="Node" parent="CharacterBody2D"]
+script = ExtResource("5_evhdw")
+yon = "x"
+tus = Array[int]([76, 72])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_i5yp2")
-
-[node name="Area2D_Sag" type="Area2D" parent="Camera2D"]
-position = Vector2(610, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Area2D_Sag"]
-position = Vector2(-289, 3.99998)
-scale = Vector2(10.0312, 11.375)
-texture = SubResource("GradientTexture2D_hokf8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D_Sag"]
-visible = false
-shape = SubResource("RectangleShape2D_qwn3h")
-
-[node name="Area2D_Sol" type="Area2D" parent="Camera2D"]
-position = Vector2(-610, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Area2D_Sol"]
-position = Vector2(288.174, 9.93418e-06)
-rotation = 3.14159
-scale = Vector2(10.0054, 11.25)
-texture = SubResource("GradientTexture2D_hokf8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D_Sol"]
-visible = false
-shape = SubResource("RectangleShape2D_qwn3h")
-
-[connection signal="body_entered" from="Camera2D/Area2D_Sag" to="Camera2D" method="_on_area_2d_sag_body_entered"]
-[connection signal="body_entered" from="Camera2D/Area2D_Sol" to="Camera2D" method="_on_area_2d_sol_body_entered"]
