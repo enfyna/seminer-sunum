@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://chgfwt7ltt0lb"]
+[gd_scene load_steps=3 format=3 uid="uid://chgfwt7ltt0lb"]
 
 [ext_resource type="Theme" uid="uid://cw7n2n5vf6gpy" path="res://Tema.tres" id="1_yp03l"]
+[ext_resource type="Script" path="res://Slayt/Sayfa.gd" id="2_bw327"]
 
-[node name="Sayfa" type="Control"]
+[node name="Sayfa_0" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yp03l")
+script = ExtResource("2_bw327")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -22,3 +24,16 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0/0"
