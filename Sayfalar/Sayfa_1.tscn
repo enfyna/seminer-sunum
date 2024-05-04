@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8xobu0f23gxb"]
 
 [ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_3su6d"]
-[ext_resource type="Texture2D" uid="uid://cv4am673g788b" path="res://icon.svg" id="2_2jufc"]
+[ext_resource type="Texture2D" uid="uid://c1brf012luqge" path="res://Resimler/Sunum/godot_node.webp" id="2_1w5jg"]
 
 [node name="Sayfa_1" instance=ExtResource("1_3su6d")]
 
@@ -14,21 +14,25 @@ text = "Godot Node Sistemi"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Control" index="0"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/CenterContainer" index="0"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CenterContainer/Control" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Control/CenterContainer" index="0"]
-layout_mode = 2
-texture = ExtResource("2_2jufc")
+texture = ExtResource("2_1w5jg")
+expand_mode = 4
+stretch_mode = 6
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2

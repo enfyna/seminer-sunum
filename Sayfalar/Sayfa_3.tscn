@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtqnnatb7h8c0"]
+
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_m7hfm"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_28mxp"]
+number_color = Color(1.73872e-06, 0.380901, 0, 1)
+symbol_color = Color(0.764706, 0, 0, 1)
+function_color = Color(0, 0, 0.678431, 1)
+member_variable_color = Color(0.643137, 0, 0.584314, 1)
+keyword_colors = {
+"@export": "#559911",
+"class_name": "#5522aa",
+"const": "#c30000",
+"export": "#c30000",
+"extends": "#5522aa",
+"var": "#e30000"
+}
+
+[node name="Sayfa_3" instance=ExtResource("1_m7hfm")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer/Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/background_color = Color(0.788235, 0.909804, 0.937255, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "class_name Oyuncu extends CharacterBody2D
+
+@export var Sp : AnimatedSprite2D
+const gravity : int = 9800
+
+func _ready():
+    pass
+
+func _process(delta):
+    if not is_on_floor():
+        velocity.y += gravity * delta
+
+    Sp.flip_h = velocity.x < 0
+
+    if abs(velocity.x) < 10.0:
+        Sp.play('default')
+    else:
+        Sp.play('move')
+
+    move_and_slide()
+"
+syntax_highlighter = SubResource("CodeHighlighter_28mxp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Node 
+ 
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "-Her node'un kendisine ait bir kodu olabilir.
+ 
+-GDScript veya C#"
+autowrap_mode = 2
+
+[node name="Label" parent="." index="1"]
+text = "2/0"

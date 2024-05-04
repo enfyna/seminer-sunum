@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://jda2euok5mkc"]
+
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_bx8du"]
+[ext_resource type="Texture2D" uid="uid://c1brf012luqge" path="res://Resimler/Sunum/godot_node.webp" id="2_2i5t4"]
+
+[node name="Sayfa_6" instance=ExtResource("1_bx8du")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2i5t4")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Node Sistemi 
+ 
+ 
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+layout_mode = 2
+text = "- Hiyerarşik Yapı
+- Bağımsız Bileşenler
+- Güçlü Ilişkiler
+- Esnek Tasarım"
+
+[node name="Label" parent="." index="1"]
+text = "5/0"
