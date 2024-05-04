@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xxe0onptfav"]
+[gd_scene load_steps=14 format=3 uid="uid://xxe0onptfav"]
 
 [ext_resource type="Script" path="res://Oyuncu/Kamera.gd" id="1_i5yp2"]
 [ext_resource type="Script" path="res://Oyuncu/Oyuncu.gd" id="1_j3blr"]
@@ -10,41 +10,74 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i71ms"]
 size = Vector2(128, 128)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2crne"]
+atlas = ExtResource("2_qak63")
+region = Rect2(0, 0, 440, 425)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Temel", "Sag", "Sol")]
-position = Vector2(-171.654, 97.5483)
-velocity = Vector2(-2.8026e-45, 2.8026e-45)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm5qq"]
+atlas = ExtResource("3_q51b6")
+region = Rect2(0, 0, 440, 425)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd11e"]
+atlas = ExtResource("2_qak63")
+region = Rect2(0, 0, 440, 425)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sgvf"]
+atlas = ExtResource("4_hj6bv")
+region = Rect2(0, 0, 440, 425)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3asvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qak63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2crne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm5qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd11e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sgvf")
+}],
+"loop": true,
+"name": &"move",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16n3q"]
+size = Vector2(200, 20)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-2.06496e-10, 0)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Sp")]
+position = Vector2(-475.956, 295.925)
+velocity = Vector2(-0.00584601, 0)
 script = ExtResource("1_j3blr")
-Temel = NodePath("Temel")
-Sag = NodePath("Sag")
-Sol = NodePath("Sol")
+Sp = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 visible = false
 shape = SubResource("RectangleShape2D_i71ms")
 
-[node name="Temel" type="Sprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(0, 1)
 scale = Vector2(0.290909, 0.301176)
-texture = ExtResource("2_qak63")
+sprite_frames = SubResource("SpriteFrames_3asvu")
+frame_progress = 0.581181
 flip_h = true
 
-[node name="Sag" type="Sprite2D" parent="CharacterBody2D"]
-visible = false
-position = Vector2(0, 1)
-scale = Vector2(0.290909, 0.301176)
-texture = ExtResource("3_q51b6")
-flip_h = true
-
-[node name="Sol" type="Sprite2D" parent="CharacterBody2D"]
-visible = false
-position = Vector2(0, 1)
-scale = Vector2(0.290909, 0.301176)
-texture = ExtResource("4_hj6bv")
-flip_h = true
-
-[node name="HareketDikey InAktif" type="Node" parent="CharacterBody2D"]
+[node name="HareketDikey Aktif" type="Node" parent="CharacterBody2D"]
 script = ExtResource("5_evhdw")
 yon = "y"
 tus = Array[int]([74, 75])
@@ -54,5 +87,26 @@ script = ExtResource("5_evhdw")
 yon = "x"
 tus = Array[int]([76, 72])
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("root_node", "base_plate")]
+position = Vector2(0.00547209, 0)
 script = ExtResource("1_i5yp2")
+root_node = NodePath("..")
+base_plate = NodePath("Kafes")
+
+[node name="Kafes" type="Node2D" parent="Camera2D"]
+position = Vector2(-475.956, 0)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D/Kafes"]
+position = Vector2(0, 370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Kafes/StaticBody2D"]
+shape = SubResource("RectangleShape2D_16n3q")
+one_way_collision = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D/Kafes"]
+position = Vector2(0, -370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Kafes/StaticBody2D2"]
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_16n3q")
+one_way_collision = true

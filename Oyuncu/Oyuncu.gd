@@ -1,29 +1,21 @@
 @tool
 class_name Oyuncu extends CharacterBody2D
 
-@export var Temel : Sprite2D
-@export var Sag : Sprite2D
-@export var Sol : Sprite2D
+@export var Sp : AnimatedSprite2D
+const gravity : int = 9800
 
 func _ready():
     pass
 
-var time = 0
 func _process(delta):
-    
-    time += delta * 10
-    Temel.flip_h = velocity.x < 0
-    Sag.flip_h = velocity.x < 0
-    Sol.flip_h = velocity.x < 0
-    Temel.hide()
-    Sag.hide()
-    Sol.hide()
+    if not is_on_floor():
+        velocity.y += gravity * delta
+
+    Sp.flip_h = velocity.x < 0
+
     if abs(velocity.x) < 10.0:
-        Temel.show()
+        Sp.play('default')
     else:
-        if fmod(time, 2.0) > 1.0:
-            Sag.show()
-        else:
-            Sol.show()
+        Sp.play('move')
 
     move_and_slide()

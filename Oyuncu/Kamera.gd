@@ -1,28 +1,31 @@
+@tool
 class_name Kamera extends Camera2D
 
-var suanki_slayt = 0
+@export var root_node : Node
+@export var base_plate : Node
+var oyuncu : Oyuncu
+var suanki_slayt : int = 0
+
+func _ready() -> void:
+    oyuncu = get_parent().get_node("CharacterBody2D")
+    if Engine.is_editor_hint():
+        root_node = get_parent().get_parent()
+        if root_node is SubViewport:
+            root_node = get_parent()
+    else:
+        root_node = self
 
 func _process(_delta):
-    var hedef = get_viewport_rect().size.x * suanki_slayt
-    position.x = lerp(
-        position.x,
+    suanki_slayt = ceil((oyuncu.position.x - 640) / 1280.0)
+    var hedef = suanki_slayt * 1280.0 
+    if Engine.is_editor_hint():
+        hedef *= -1
+
+    root_node.position.x = lerp(
+        root_node.position.x,
         hedef,
         0.2
     )
-    if abs(hedef - position.x) < 0.1:
-        set_process(false)
 
-func slayt_degistir(body : Node2D, miktar : int):
-    if not body.is_class("CharacterBody2D"):
-        return
-    if is_processing():
-        return
-    suanki_slayt += miktar
-    set_process(true)
-
-func _on_area_2d_sol_body_entered(body:Node2D):
-    slayt_degistir(body, -1)
-
-func _on_area_2d_sag_body_entered(body:Node2D):
-    slayt_degistir(body, 1)
+    base_plate.position.x = oyuncu.position.x
 
