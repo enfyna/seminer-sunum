@@ -1,27 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://jda2euok5mkc"]
+[gd_scene load_steps=3 format=3 uid="uid://fj82rm1n5nhm"]
 
 [ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_bx8du"]
-[ext_resource type="Texture2D" uid="uid://c1brf012luqge" path="res://Resimler/Sunum/godot_node.webp" id="2_2i5t4"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_28mxp"]
+number_color = Color(1.73872e-06, 0.380901, 0, 1)
+symbol_color = Color(0.764706, 0, 0, 1)
+function_color = Color(0, 0, 0.678431, 1)
+member_variable_color = Color(0.643137, 0, 0.584314, 1)
+keyword_colors = {
+"@export": "#559911",
+"class_name": "#5522aa",
+"const": "#c30000",
+"export": "#c30000",
+"extends": "#5522aa",
+"var": "#e30000"
+}
 
 [node name="Sayfa_6" instance=ExtResource("1_bx8du")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.66
+theme_override_colors/background_color = Color(0.789141, 0.909142, 0.937719, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "class_name Slayt extends Control
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Control" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_2i5t4")
-expand_mode = 4
-stretch_mode = 6
+const klasor = \"res://Sayfalar/\"
+
+func _ready() -> void:
+    RenderingServer.set_default_clear_color(Color(1,1,1))
+
+    var sayfalar = get_node(\"Sayfalar\")
+
+    var dir = DirAccess.open(klasor)
+    var sayfa_sayisi = dir.get_files().size() - 2
+    for sayfa in dir.get_files():
+        if sayfa == \"Sayfa.tscn\":
+            continue
+        var syf : Sayfa = load(klasor + sayfa).instantiate()
+        syf.sayfa_sayisi = sayfa_sayisi
+        sayfalar.add_child(syf)
+        syf.position.x = int(sayfa.split(\"_\")[1]) - 1
+        syf.position.x *= syf.size.x
+"
+syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
 layout_mode = 2
@@ -30,19 +57,20 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Node Sistemi 
+text = "Node 
  
- 
- "
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "- Hiyerarşik Yapı
-- Bağımsız Bileşenler
-- Güçlü Ilişkiler
-- Esnek Tasarım"
+text = "-get_parent()
+ 
+- get_node()
+ 
+-get_children()"
+autowrap_mode = 1
 
 [node name="Label" parent="." index="1"]
-text = "5/0"
+text = "4/0"

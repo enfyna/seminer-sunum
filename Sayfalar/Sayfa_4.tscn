@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://baxw8wt4343pj"]
+[gd_scene load_steps=3 format=3 uid="uid://dtqnnatb7h8c0"]
 
 [ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_2t531"]
 
@@ -32,31 +32,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/background_color = Color(0.789141, 0.909142, 0.937719, 1)
+theme_override_colors/background_color = Color(0.788235, 0.909804, 0.937255, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
-text = "class_name Hareket extends Node
+text = "class_name Oyuncu extends CharacterBody2D
 
-@export var yon : String 
-@export var tus : Array[int]
+@export var Sp : AnimatedSprite2D
+@export var Zemin : Node2D
+const gravity : int = 9800
 
-var parent : Oyuncu
+func _ready():
+    pass
 
-func _ready() -> void:
-    parent = get_parent()
+func _process(delta):
+    if not is_on_floor():
+        velocity.y += gravity * delta
 
+    Sp.flip_h = velocity.x < 0
 
-func _process(_delta: float) -> void:
-    var v = parent.velocity[yon]
-
-    if Input.is_key_pressed(tus[0]):
-        v = 1000
-    elif Input.is_key_pressed(tus[1]):
-        v = -1000
+    if abs(velocity.x) < 10.0:
+        Sp.play('default')
     else:
-        v = lerpf(v, 0.0, 0.2)
+        Sp.play('move')
 
-    parent.velocity[yon] = v"
+    move_and_slide()
+"
 syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
@@ -74,12 +74,10 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "- get_parent()
+text = "-Her node'un kendisine ait bir kodu olabilir.
  
--get_node()
- 
--get_children()"
+-GDScript veya C#"
 autowrap_mode = 2
 
 [node name="Label" parent="." index="1"]
-text = "3/0"
+text = "2/0"

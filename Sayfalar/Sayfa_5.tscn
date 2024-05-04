@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://fj82rm1n5nhm"]
+[gd_scene load_steps=3 format=3 uid="uid://baxw8wt4343pj"]
 
 [ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_xgsm5"]
 
@@ -21,33 +21,42 @@ keyword_colors = {
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer" index="0"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.66
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer/Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/background_color = Color(0.789141, 0.909142, 0.937719, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
-text = "class_name Slayt extends Control
+text = "class_name Hareket extends Node
 
-const klasor = \"res://Sayfalar/\"
+@export var yon : String 
+@export var tus : Array[int]
+
+var parent : Oyuncu
 
 func _ready() -> void:
-    RenderingServer.set_default_clear_color(Color(1,1,1))
+    parent = get_parent()
 
-    var sayfalar = get_node(\"Sayfalar\")
 
-    var dir = DirAccess.open(klasor)
-    var sayfa_sayisi = dir.get_files().size() - 2
-    for sayfa in dir.get_files():
-        if sayfa == \"Sayfa.tscn\":
-            continue
-        var syf : Sayfa = load(klasor + sayfa).instantiate()
-        syf.sayfa_sayisi = sayfa_sayisi
-        sayfalar.add_child(syf)
-        syf.position.x = int(sayfa.split(\"_\")[1]) - 1
-        syf.position.x *= syf.size.x
-"
+func _process(_delta: float) -> void:
+    var v = parent.velocity[yon]
+
+    if Input.is_key_pressed(tus[0]):
+        v = 1000
+    elif Input.is_key_pressed(tus[1]):
+        v = -1000
+    else:
+        v = lerpf(v, 0.0, 0.2)
+
+    parent.velocity[yon] = v"
 syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
@@ -65,12 +74,12 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "-get_parent()
+text = "- get_parent()
  
-- get_node()
+-get_node()
  
 -get_children()"
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="Label" parent="." index="1"]
-text = "4/0"
+text = "3/0"
