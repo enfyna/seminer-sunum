@@ -34,7 +34,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -58,13 +58,13 @@ animations = [{
 size = Vector2(200, 20)
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(-2.06496e-10, 0)
+position = Vector2(-2.8026e-45, 0)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Sp")]
-position = Vector2(-475.956, 295.925)
-velocity = Vector2(-0.00584601, 0)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Sp", "Zemin")]
+position = Vector2(236.905, 295.925)
 script = ExtResource("1_j3blr")
 Sp = NodePath("AnimatedSprite2D")
+Zemin = NodePath("../Kafes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 visible = false
@@ -74,8 +74,7 @@ shape = SubResource("RectangleShape2D_i71ms")
 position = Vector2(0, 1)
 scale = Vector2(0.290909, 0.301176)
 sprite_frames = SubResource("SpriteFrames_3asvu")
-frame_progress = 0.581181
-flip_h = true
+frame_progress = 0.123717
 
 [node name="HareketDikey Aktif" type="Node" parent="CharacterBody2D"]
 script = ExtResource("5_evhdw")
@@ -87,26 +86,26 @@ script = ExtResource("5_evhdw")
 yon = "x"
 tus = Array[int]([76, 72])
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("root_node", "base_plate")]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("root_node")]
 position = Vector2(0.00547209, 0)
 script = ExtResource("1_i5yp2")
 root_node = NodePath("..")
-base_plate = NodePath("Kafes")
 
-[node name="Kafes" type="Node2D" parent="Camera2D"]
-position = Vector2(-475.956, 0)
+[node name="Kafes" type="Node2D" parent="."]
+visible = false
+position = Vector2(236.905, 0)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Camera2D/Kafes"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Kafes"]
 position = Vector2(0, 370)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Kafes/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kafes/StaticBody2D"]
 shape = SubResource("RectangleShape2D_16n3q")
 one_way_collision = true
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Camera2D/Kafes"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Kafes"]
 position = Vector2(0, -370)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Kafes/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kafes/StaticBody2D2"]
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_16n3q")
 one_way_collision = true

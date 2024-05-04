@@ -2,6 +2,7 @@
 class_name Oyuncu extends CharacterBody2D
 
 @export var Sp : AnimatedSprite2D
+@export var Zemin : Node2D
 const gravity : int = 9800
 
 func _ready():
@@ -19,3 +20,5 @@ func _process(delta):
         Sp.play('move')
 
     move_and_slide()
+
+    Zemin.position.x = position.x

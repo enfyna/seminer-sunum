@@ -2,7 +2,6 @@
 class_name Kamera extends Camera2D
 
 @export var root_node : Node
-@export var base_plate : Node
 var oyuncu : Oyuncu
 var suanki_slayt : int = 0
 
@@ -26,6 +25,4 @@ func _process(_delta):
         hedef,
         0.2
     )
-
-    base_plate.position.x = oyuncu.position.x
 
