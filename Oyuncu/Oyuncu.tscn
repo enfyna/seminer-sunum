@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xxe0onptfav"]
+[gd_scene load_steps=15 format=3 uid="uid://xxe0onptfav"]
 
 [ext_resource type="Script" path="res://Oyuncu/Kamera.gd" id="1_i5yp2"]
 [ext_resource type="Script" path="res://Oyuncu/Oyuncu.gd" id="1_j3blr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://hcucfsdgfrom" path="res://Resimler/Dino/dino_right.png" id="3_q51b6"]
 [ext_resource type="Texture2D" uid="uid://c22hih56apwo1" path="res://Resimler/Dino/dino_left.png" id="4_hj6bv"]
 [ext_resource type="Script" path="res://Oyuncu/Hareket.gd" id="5_evhdw"]
+[ext_resource type="Script" path="res://Oyuncu/Zemin.gd" id="7_lqd07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i71ms"]
 size = Vector2(128, 128)
@@ -60,11 +61,10 @@ size = Vector2(200, 20)
 [node name="Node2D" type="Node2D"]
 position = Vector2(-2.8026e-45, 0)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Sp", "Zemin")]
-position = Vector2(236.905, 295.925)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("Sp")]
+position = Vector2(0, 295.988)
 script = ExtResource("1_j3blr")
 Sp = NodePath("AnimatedSprite2D")
-Zemin = NodePath("../Kafes")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 visible = false
@@ -74,7 +74,7 @@ shape = SubResource("RectangleShape2D_i71ms")
 position = Vector2(0, 1)
 scale = Vector2(0.290909, 0.301176)
 sprite_frames = SubResource("SpriteFrames_3asvu")
-frame_progress = 0.123717
+frame_progress = 0.529136
 
 [node name="HareketDikey Aktif" type="Node" parent="CharacterBody2D"]
 script = ExtResource("5_evhdw")
@@ -86,26 +86,26 @@ script = ExtResource("5_evhdw")
 yon = "x"
 tus = Array[int]([76, 72])
 
+[node name="Zemin" type="Node2D" parent="CharacterBody2D"]
+position = Vector2(0, -295.988)
+script = ExtResource("7_lqd07")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CharacterBody2D/Zemin"]
+position = Vector2(0, 370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Zemin/StaticBody2D"]
+shape = SubResource("RectangleShape2D_16n3q")
+one_way_collision = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="CharacterBody2D/Zemin"]
+position = Vector2(0, -370)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Zemin/StaticBody2D2"]
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_16n3q")
+one_way_collision = true
+
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("root_node")]
 position = Vector2(0.00547209, 0)
 script = ExtResource("1_i5yp2")
 root_node = NodePath("..")
-
-[node name="Kafes" type="Node2D" parent="."]
-visible = false
-position = Vector2(236.905, 0)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Kafes"]
-position = Vector2(0, 370)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kafes/StaticBody2D"]
-shape = SubResource("RectangleShape2D_16n3q")
-one_way_collision = true
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Kafes"]
-position = Vector2(0, -370)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Kafes/StaticBody2D2"]
-rotation = 3.14159
-shape = SubResource("RectangleShape2D_16n3q")
-one_way_collision = true
