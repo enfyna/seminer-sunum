@@ -1,5 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://cw7n2n5vf6gpy"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cw7n2n5vf6gpy"]
+
+[ext_resource type="FontFile" uid="uid://lbqexe86jyqn" path="res://Font/BigBlue_Terminal_437TT.TTF" id="1_kgdig"]
 
 [resource]
-default_font_size = 56
+default_font = ExtResource("1_kgdig")
+default_font_size = 48
 Label/colors/font_color = Color(0, 0, 0, 1)
