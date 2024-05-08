@@ -7,15 +7,15 @@ class_name Hareket extends Node
 var parent : Oyuncu
 
 func _ready() -> void:
-    name = name.split(' ')[0]
-
-    if not get_parent() is Oyuncu or len(yon) == 0:
-        name = name + ' InAktif'
-        set_process(false)
-        return
-
     parent = get_parent()
-    name = name + ' Aktif'
+    #name = name.split(' ')[0]
+
+    #if not get_parent() is Oyuncu or len(yon) == 0:
+    #    name = name + ' InAktif'
+    #    set_process(false)
+    #    return
+
+    #name = name + ' Aktif'
     
 
 func _process(_delta: float) -> void:
