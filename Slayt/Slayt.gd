@@ -9,10 +9,8 @@ func _ready() -> void:
     var sayfalar = get_node("Sayfalar")
 
     var dir = DirAccess.open(klasor)
-    var sayfa_sayisi = dir.get_files().size() - 2
+    var sayfa_sayisi = dir.get_files().size()
     for sayfa in dir.get_files():
-        if sayfa == "Sayfa.tscn":
-            continue
         var syf : Sayfa = load(klasor + sayfa).instantiate()
         syf.sayfa_sayisi = sayfa_sayisi
         sayfalar.add_child(syf)
