@@ -1,5 +1,5 @@
 @tool
-class_name Oyuncu extends CharacterBody2D
+class_name Kus extends CharacterBody2D
 
 const gravity : int = 9800
 

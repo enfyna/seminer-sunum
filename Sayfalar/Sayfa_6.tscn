@@ -1,76 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://fj82rm1n5nhm"]
+[gd_scene load_steps=2 format=3 uid="uid://dy74k6ir5crhj"]
 
-[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_bx8du"]
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_xgsm5"]
 
-[sub_resource type="CodeHighlighter" id="CodeHighlighter_28mxp"]
-number_color = Color(1.73872e-06, 0.380901, 0, 1)
-symbol_color = Color(0.764706, 0, 0, 1)
-function_color = Color(0, 0, 0.678431, 1)
-member_variable_color = Color(0.643137, 0, 0.584314, 1)
-keyword_colors = {
-"@export": "#559911",
-"class_name": "#5522aa",
-"const": "#c30000",
-"export": "#c30000",
-"extends": "#5522aa",
-"var": "#e30000"
-}
-
-[node name="Sayfa_6" instance=ExtResource("1_bx8du")]
+[node name="Sayfa_5" instance=ExtResource("1_xgsm5")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer" index="0"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.66
-theme_override_colors/background_color = Color(0.789141, 0.909142, 0.937719, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 21
-text = "class_name Slayt extends Control
-
-const klasor = \"res://Sayfalar/\"
-
-func _ready() -> void:
-    RenderingServer.set_default_clear_color(Color(1,1,1))
-
-    var sayfalar = get_node(\"Sayfalar\")
-
-    var dir = DirAccess.open(klasor)
-    var sayfa_sayisi = dir.get_files().size() - 2
-    for sayfa in dir.get_files():
-        if sayfa == \"Sayfa.tscn\":
-            continue
-        var syf : Sayfa = load(klasor + sayfa).instantiate()
-        syf.sayfa_sayisi = sayfa_sayisi
-        sayfalar.add_child(syf)
-        syf.position.x = int(sayfa.split(\"_\")[1]) - 1
-        syf.position.x *= syf.size.x
-"
-syntax_highlighter = SubResource("CodeHighlighter_28mxp")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Node 
- 
+text = "Aşağıdaki özellikler tüm node'larda vardır:
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "-get_parent()
- 
-- get_node()
- 
--get_children()"
-autowrap_mode = 1
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 34
+text = "* Bir isme sahiptirler.
+* Değiştirilebilir özellikleri vardır.
+* Her karede güncellenmek için callback alırlar.
+* Yeni özellikler ve işlevlerle genişletilebilir.
+* Başka bir düğüme çocuk olarak eklenebilir."
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Label" parent="." index="1"]
-text = "4/0"
+text = "3/0"

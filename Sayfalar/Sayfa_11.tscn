@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://txlemv3u3dwr"]
+
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_d6ql1"]
+
+[node name="Sayfa_10" instance=ExtResource("1_d6ql1")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" index="0"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sahneler
+ 
+ 
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" index="1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "* Her zaman 1 tane root(kök) node'u vardır.
+* Diske kaydedilip yüklenebilinirler.
+* İstenilen sayıda instance(örnek) oluşturulabilir.
+"
+autowrap_mode = 2
+
+[node name="Label" parent="." index="1"]
+text = "8/0"

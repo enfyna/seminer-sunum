@@ -13,6 +13,7 @@ func _ready() -> void:
     for sayfa in dir.get_files():
         var syf : Sayfa = load(klasor + sayfa).instantiate()
         syf.sayfa_sayisi = sayfa_sayisi
+        syf.sayfa_no = int(sayfa.split("_")[1])
         sayfalar.add_child(syf)
-        syf.position.x = int(sayfa.split("_")[1]) - 1
+        syf.position.x = syf.sayfa_no - 1
         syf.position.x *= syf.size.x

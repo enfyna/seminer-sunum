@@ -4,19 +4,10 @@ class_name Hareket extends Node
 @export var yon : String
 @export var tus : Array[int]
 
-var parent : Oyuncu
+var parent : Kus
 
 func _ready() -> void:
     parent = get_parent()
-    #name = name.split(' ')[0]
-
-    #if not get_parent() is Oyuncu or len(yon) == 0:
-    #    name = name + ' InAktif'
-    #    set_process(false)
-    #    return
-
-    #name = name + ' Aktif'
-    
 
 func _process(_delta: float) -> void:
     var v = parent.velocity[yon]
@@ -29,5 +20,3 @@ func _process(_delta: float) -> void:
         v = lerpf(v, 0.0, 0.2)
 
     parent.velocity[yon] = v
-
-

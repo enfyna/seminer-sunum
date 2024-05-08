@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://jda2euok5mkc"]
+
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_2bfdv"]
+[ext_resource type="Texture2D" uid="uid://cn0fxkib0q616" path="res://Resimler/Sunum/bullet_scene.png" id="2_hhxar"]
+
+[node name="Sayfa_9" instance=ExtResource("1_2bfdv")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Control2" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -250.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.675, 1.675)
+texture = ExtResource("2_hhxar")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" index="0"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Sahneler
+ 
+ 
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" index="1"]
+layout_mode = 2
+text = "*
+Node oluşturmak için açılan dosyaya sahne adı verilir."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" parent="." index="1"]
+text = "7/0"

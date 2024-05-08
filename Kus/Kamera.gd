@@ -2,7 +2,7 @@
 class_name Kamera extends Camera2D
 
 @export var root_node : Node
-var oyuncu : Oyuncu
+var oyuncu : Kus
 var suanki_slayt : int = 0
 
 func _ready() -> void:

@@ -1,11 +1,11 @@
 [gd_scene load_steps=25 format=3 uid="uid://xxe0onptfav"]
 
-[ext_resource type="Script" path="res://Oyuncu/Kamera.gd" id="1_i5yp2"]
-[ext_resource type="Script" path="res://Oyuncu/Oyuncu.gd" id="1_j3blr"]
+[ext_resource type="Script" path="res://Kus/Kamera.gd" id="1_i5yp2"]
+[ext_resource type="Script" path="res://Kus/Kuş.gd" id="1_j3blr"]
 [ext_resource type="Texture2D" uid="uid://koxq26742ucu" path="res://Resimler/Bird/BirdSprite.png" id="2_wdpcl"]
-[ext_resource type="Script" path="res://Oyuncu/Animasyon.gd" id="4_slnch"]
-[ext_resource type="Script" path="res://Oyuncu/Hareket.gd" id="5_evhdw"]
-[ext_resource type="Script" path="res://Oyuncu/Zemin.gd" id="7_lqd07"]
+[ext_resource type="Script" path="res://Kus/Animasyon.gd" id="4_slnch"]
+[ext_resource type="Script" path="res://Kus/Hareket.gd" id="5_evhdw"]
+[ext_resource type="Script" path="res://Kus/Zemin.gd" id="7_lqd07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i71ms"]
 size = Vector2(128, 128)
@@ -148,10 +148,11 @@ animations = [{
 size = Vector2(200, 20)
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(2.8026e-45, 0)
+position = Vector2(-2.8026e-45, 0)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(-223.75, 295.995)
+position = Vector2(373.85, 296)
+velocity = Vector2(-5.98008e-19, 0)
 script = ExtResource("1_j3blr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -163,12 +164,10 @@ texture_filter = 1
 position = Vector2(0, -8)
 scale = Vector2(9, 9)
 sprite_frames = SubResource("SpriteFrames_22uif")
-animation = &"eat"
-frame = 4
-frame_progress = 1.0
+frame_progress = 0.311729
 script = ExtResource("4_slnch")
 
-[node name="HareketDikey Aktif" type="Node" parent="CharacterBody2D"]
+[node name="Hareket" type="Node" parent="CharacterBody2D"]
 script = ExtResource("5_evhdw")
 yon = "y"
 tus = Array[int]([74, 75])
@@ -179,8 +178,7 @@ yon = "x"
 tus = Array[int]([76, 72])
 
 [node name="Zemin" type="Node2D" parent="CharacterBody2D"]
-visible = false
-position = Vector2(0, -295.995)
+position = Vector2(0, -296)
 script = ExtResource("7_lqd07")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CharacterBody2D/Zemin"]

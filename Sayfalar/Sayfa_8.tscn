@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtqnnatb7h8c0"]
+[gd_scene load_steps=3 format=3 uid="uid://baxw8wt4343pj"]
 
-[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_2t531"]
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_xgsm5"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_28mxp"]
 number_color = Color(1.73872e-06, 0.380901, 0, 1)
@@ -16,7 +16,7 @@ keyword_colors = {
 "var": "#e30000"
 }
 
-[node name="Sayfa_6" instance=ExtResource("1_2t531")]
+[node name="Sayfa_7" instance=ExtResource("1_xgsm5")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
@@ -32,22 +32,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/background_color = Color(0.788235, 0.909804, 0.937255, 1)
+theme_override_colors/background_color = Color(0.789141, 0.909142, 0.937719, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
-text = "class_name Kus extends CharacterBody2D
+text = "class_name Hareket extends Node
 
-const gravity : int = 9800
+@export var yon : String
+@export var tus : Array[int]
 
-func _ready():
-    pass
+var parent : Kus
 
-func _process(delta):
-    if not is_on_floor():
-        velocity.y += gravity * delta
+func _ready() -> void:
+    parent = get_parent()
 
-    move_and_slide()
-"
+func _process(_delta: float) -> void:
+    var v = parent.velocity[yon]
+
+    if Input.is_key_pressed(tus[0]):
+        v = 1000
+    elif Input.is_key_pressed(tus[1]):
+        v = -1000
+    else:
+        v = lerpf(v, 0.0, 0.2)
+
+    parent.velocity[yon] = v"
 syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
@@ -65,7 +73,9 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "-Her node'un kendisine ait bir kodu olabilir.
+text = "- get_parent()
  
--GDScript veya C#"
+-get_node()
+ 
+-get_children()"
 autowrap_mode = 2

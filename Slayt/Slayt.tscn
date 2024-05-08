@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bfgecw47r5qox"]
 
-[ext_resource type="PackedScene" uid="uid://xxe0onptfav" path="res://Oyuncu/Oyuncu.tscn" id="1_j15wr"]
+[ext_resource type="PackedScene" uid="uid://xxe0onptfav" path="res://Kus/Kuş.tscn" id="1_j15wr"]
 [ext_resource type="Script" path="res://Slayt/Slayt.gd" id="1_pv5eg"]
 
 [node name="Slayt" type="Control"]
@@ -8,8 +8,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -6400.0
-offset_right = -6400.0
+offset_left = -7680.0
+offset_right = -7680.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pv5eg")
@@ -22,5 +22,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Oyuncu" parent="." instance=ExtResource("1_j15wr")]
+[node name="Kuş" parent="." instance=ExtResource("1_j15wr")]
 position = Vector2(641, 360)

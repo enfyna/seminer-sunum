@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8xobu0f23gxb"]
 
-[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_3su6d"]
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_3su6d"]
 [ext_resource type="Texture2D" uid="uid://c1brf012luqge" path="res://Resimler/Sunum/godot_node.webp" id="2_1w5jg"]
 
 [node name="Sayfa_1" instance=ExtResource("1_3su6d")]
@@ -39,3 +39,6 @@ layout_mode = 2
 text = "Ramazan Aslan - 21360859053
 3.Sınıf Bilgisayar Mühendisliği"
 horizontal_alignment = 1
+
+[node name="Label" parent="." index="1"]
+text = "1/0"

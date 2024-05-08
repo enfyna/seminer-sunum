@@ -1,48 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccijq54g08gsv"]
+[gd_scene load_steps=2 format=3 uid="uid://qdwv312uejgv"]
 
-[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Sayfalar/Sayfa.tscn" id="1_b5ey0"]
-[ext_resource type="Texture2D" uid="uid://bplahseiogt0g" path="res://Resimler/Sunum/nodes_and_scenes_nodes.webp" id="2_r5ag5"]
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_s1hhd"]
 
-[node name="Sayfa_2" instance=ExtResource("1_b5ey0")]
+[node name="Sayfa_1" instance=ExtResource("1_s1hhd")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
-size_flags_horizontal = 3
+text = "Içindekiler"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Control" index="0"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Control" index="0"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_r5ag5")
-expand_mode = 5
-stretch_mode = 6
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "Node 
- 
- 
- "
-horizontal_alignment = 1
+text = "- Node
+- GDScript
+- Sahne"
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2
-text = "*
-Oyunun temel yapıtaşları olarak kullanılırlar."
+text = " "
 horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Label" parent="." index="1"]
-text = "1/0"
