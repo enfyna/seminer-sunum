@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtqnnatb7h8c0"]
+[gd_scene load_steps=3 format=3 uid="uid://beob82ilbe68m"]
 
-[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_2t531"]
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_2a6sm"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_28mxp"]
 number_color = Color(1.73872e-06, 0.380901, 0, 1)
@@ -16,7 +16,7 @@ keyword_colors = {
 "var": "#e30000"
 }
 
-[node name="Sayfa_6" instance=ExtResource("1_2t531")]
+[node name="Sayfa_6" instance=ExtResource("1_2a6sm")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
@@ -35,18 +35,12 @@ grow_vertical = 2
 theme_override_colors/background_color = Color(0.788235, 0.909804, 0.937255, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
-text = "class_name Kus extends CharacterBody2D
+text = "class_name RenkDegistirici extends Area2D
 
-const gravity : int = 9800
-
-func _ready():
-    pass
-
-func _process(delta):
-    if not is_on_floor():
-        velocity.y += gravity * delta
-
-    move_and_slide()
+func _on_body_entered(body:Node2D) -> void:
+    body.modulate = Color(
+        randf(), randf(), randf()
+    )
 "
 syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 
@@ -57,7 +51,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "GDScript
+text = "Sinyaller
  
 "
 horizontal_alignment = 1
@@ -65,7 +59,5 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-text = "-GDScript veya C#
- 
--Her node'un kendisine ait bir kodu olabilir."
+text = "- Objelerin birbirleriyle referansı olmadan iletişim kurabilmelerini sağlar."
 autowrap_mode = 2

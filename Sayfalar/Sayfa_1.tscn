@@ -39,6 +39,3 @@ layout_mode = 2
 text = "Ramazan Aslan - 21360859053
 3.Sınıf Bilgisayar Mühendisliği"
 horizontal_alignment = 1
-
-[node name="Label" parent="." index="1"]
-text = "1/0"

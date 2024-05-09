@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp5ejjkra5iyy"]
+
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_0byan"]
+[ext_resource type="PackedScene" uid="uid://vin1xrve5jqf" path="res://RenkDegistirici/RenkDegistirici.tscn" id="2_nt1vn"]
+
+[node name="Sayfa_1" instance=ExtResource("1_0byan")]
+
+[node name="RenkDegistirici" parent="." index="0" instance=ExtResource("2_nt1vn")]
+position = Vector2(622, 574)

@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b44frd1sv3c4n"]
+[gd_scene load_steps=3 format=3 uid="uid://fj82rm1n5nhm"]
 
-[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_xoy4y"]
+[ext_resource type="PackedScene" uid="uid://chgfwt7ltt0lb" path="res://Slayt/Sayfa.tscn" id="1_bx8du"]
 
-[sub_resource type="CodeHighlighter" id="CodeHighlighter_o3nu6"]
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_28mxp"]
 number_color = Color(1.73872e-06, 0.380901, 0, 1)
 symbol_color = Color(0.764706, 0, 0, 1)
 function_color = Color(0, 0, 0.678431, 1)
@@ -16,23 +16,13 @@ keyword_colors = {
 "var": "#e30000"
 }
 
-[node name="Sayfa_11" instance=ExtResource("1_xoy4y")]
+[node name="Sayfa_8" instance=ExtResource("1_bx8du")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" index="0"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer" index="0"]
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/HBoxContainer" index="0"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.63
-
-[node name="TextEdit2" type="TextEdit" parent="MarginContainer/HBoxContainer/Control" index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.66
 theme_override_colors/background_color = Color(0.789141, 0.909142, 0.937719, 1)
@@ -48,7 +38,7 @@ func _ready() -> void:
     var sayfalar = get_node(\"Sayfalar\")
 
     var dir = DirAccess.open(klasor)
-    var sayfa_sayisi = dir.get_files().size() - 1
+    var sayfa_sayisi = dir.get_files().size()
     for sayfa in dir.get_files():
         var syf : Sayfa = load(klasor + sayfa).instantiate()
         syf.sayfa_sayisi = sayfa_sayisi
@@ -56,28 +46,26 @@ func _ready() -> void:
         syf.position.x = int(sayfa.split(\"_\")[1]) - 1
         syf.position.x *= syf.size.x
 "
-syntax_highlighter = SubResource("CodeHighlighter_o3nu6")
+syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" index="0"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="0"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Sahneler
+text = "GDScript 
  
- 
- "
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" index="1"]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 34
-text = "-instantiate() -add_child()
-"
+text = "-get_parent()
+ 
+- get_node()
+ 
+-get_children()"
 autowrap_mode = 1
-
-[node name="Label" parent="." index="1"]
-text = "9/0"
