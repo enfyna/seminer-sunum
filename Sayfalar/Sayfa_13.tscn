@@ -37,10 +37,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
 text = "class_name RenkDegistirici extends Area2D
 
+var current = false
+
 func _on_body_entered(body:Node2D) -> void:
     body.modulate = Color(
-        randf(), randf(), randf()
+       current, current, current
     )
+	current = not current
 "
 syntax_highlighter = SubResource("CodeHighlighter_28mxp")
 

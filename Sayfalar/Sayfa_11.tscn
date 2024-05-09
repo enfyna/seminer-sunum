@@ -40,7 +40,7 @@ text = "class_name Hareket extends Node
 @export var yon : String
 @export var tus : Array[int]
 
-var parent : Kus
+var parent
 
 func _ready() -> void:
     parent = get_parent()
